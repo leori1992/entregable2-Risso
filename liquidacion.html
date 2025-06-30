@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sistema de Liquidación de Sueldos</title>
+</head>
+<body>
+    <h1>LIQUIDACIÓN</h1>
+    <div class="containerLiq">
+        <div class="formularioDiv">
+            <form id="formliq">
+                <label class="labelLiq" for="nombre">Nombre del Empleado:</label>
+                <input class="inputLiq" type="text" id="nombreingresado" required>
+    
+                <label class="labelLiq" for="sueldoBase">Sueldo Bruto:</label>
+                <input class="inputLiq" type="number" id="sueldoBrutoIngresado" step="0.01" min="0" required>
+    
+                <label class="labelLiq" for="horasExtras">Horas Extras (cantidad):</label>
+                <input class="inputLiq" type="number" id="horasExtras" value="0">
+    
+                <label class="labelLiq" for="antiguedad">Antigüedad (años):</label>
+                <input class="inputLiq" type="number" id="antiguedad" value="0">
+    
+                <label class="labelLiq" for="presentismo">Presentismo (sin %):</label>
+                <input class="inputLiq" type="number" id="presentismo" value="0">
+    
+                <button class="butonLiq" type="submit">Calcular Liquidación</button>
+            </form>
+        </div>
+        <div class="resultadosDiv" id="resultados">
+          
+            
+        </div>
+
+
+    </div>
+    <div class="liqguardadas" >
+    <h2>Ver Liquidaciones Guardadas</h2>
+    <div>
+        <label for="selectorLiquidaciones">Selecciona un Empleado:</label>
+        <select id="selectorLiquidaciones">
+            <option value="">-- Selecciona --</option>
+        </select>
+    </div>
+    
+    <div id="detalleLiquidacionSeleccionada">
+        <p>Selecciona un empleado del desplegable para ver su liquidación.</p>
+    </div></div>
+    <div class="volverAlDialogo">
+        <button onclick="volver()">Volver a las opciones</button>
+    </div>
+    <script>
+        function volver() {
+            window.location.href = "principal.html";
+        }
+    </script>
+    <script src="liquidacion.js"></script>
+</body>
+</html>
