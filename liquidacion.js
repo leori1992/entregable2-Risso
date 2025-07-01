@@ -101,32 +101,32 @@ function recuperarLiquidaciones() {
 }
 
 
-// Función para  desplegable con los nombres de los empleados
+
 function SelectorLiquidaciones() {
     const selector = document.getElementById('selectorLiquidaciones');
-    selector.innerHTML = '<option value="">-- Selecciona --</option>'; // Limpia y añade opción por defecto
+    selector.innerHTML = '<option value="">-- Selecciona --</option>'; 
 
     const liquidaciones = recuperarLiquidaciones();
     
-    // Usamos un Set para almacenar nombres únicos y evitar duplicados
+    
     const nombresUnicos = new Set();
     liquidaciones.forEach(liq => {
         nombresUnicos.add(liq.nombre);
     });
 
-    // Añade cada nombre único como una opción en el desplegable
+    
     nombresUnicos.forEach(nombre => {
         const option = document.createElement('option');
-        option.value = nombre; // El valor de la opción será el nombre del empleado
+        option.value = nombre; 
         option.textContent = nombre;
         selector.appendChild(option);
     });
 }
 
-// Función para mostrar los detalles de la liquidación seleccionada
+
 function mostrarDetalleLiquidacion() {
     const selector = document.getElementById('selectorLiquidaciones');
-    const nombreSeleccionado = selector.value; // Obtiene el nombre del empleado seleccionado
+    const nombreSeleccionado = selector.value; 
     const detalleDiv = document.getElementById('detalleLiquidacionSeleccionada');
 
     if (!nombreSeleccionado) {
@@ -135,9 +135,7 @@ function mostrarDetalleLiquidacion() {
     }
 
     const liquidaciones = recuperarLiquidaciones();
-    // Encuentra la última liquidación para el nombre seleccionado
-    // Si quieres ver todas las liquidaciones de ese nombre, tendrías que iterar y mostrarlas todas
-    // Por simplicidad, aquí mostramos la última.
+ 
     const liquidacionEncontrada = liquidaciones.findLast(liq => liq.nombre === nombreSeleccionado);
 
     if (liquidacionEncontrada) {
