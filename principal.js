@@ -4,19 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     async function obtenerCotizacionDolarExchangeRateAPI() {
         
         const API_KEY = 'e58f6e869b344ab4dcf02251'; 
-        // URL de la API de ExchangeRate-API. 'latest/USD' significa que queremos
-        // las últimas tasas de conversión donde el dólar estadounidense es la moneda base.
+       
         const API_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/USD`;
 
         try {
             const response = await fetch(API_URL);
 
             if (!response.ok) {
-                // Si hay un error HTTP (ej. 404, 401, 403), intentar leer el mensaje de error de la API
+                
                 let errorMessage = `Error HTTP: ${response.status} - ${response.statusText}`;
                 try {
                     const errorData = await response.json();
-                    if (errorData && errorData.error_type) { // ExchangeRate-API usa 'error_type'
+                    if (errorData && errorData.error_type) { 
                         errorMessage = `Error de la API: ${errorData.error_type}`;
                     } else if (errorData && errorData.message) {
                         errorMessage = `Error de la API: ${errorData.message}`;
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Verificar si la respuesta fue exitosa y contiene las tasas
             if (data.result === 'success' && data.conversion_rates && data.conversion_rates.ARS) {
                 const cotizacionARS = data.conversion_rates.ARS; // Obtener la cotización del ARS
-                // La API de ExchangeRate-API da el timestamp en segundos, hay que multiplicarlo por 1000 para milisegundos
+                /
                 const fechaActualizacion = new Date(data.time_last_update_unix * 1000).toLocaleString();
 
                 const elementoCotizacion = document.getElementById('cotizacionDolarDisplay');
@@ -67,6 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Llama a la nueva función al cargar la página
+    
     obtenerCotizacionDolarExchangeRateAPI();
 });
