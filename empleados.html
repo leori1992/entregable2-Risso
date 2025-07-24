@@ -1,13 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gestión de Empleados</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="bodyEmpleados">
+    <div class="contenedorEmpleados">
+        <h1 class="tituloEmpleados">Gestión de Empleados</h1>
 
-    <h1>empleados</h1>
-    
+        <form id="formularioEmpleado" class="formularioEmpleado">
+            <div class="grupoFormulario">
+                <label for="nombreEmpleado" class="etiquetaEmpleado">Nombre:</label>
+                <input type="text" id="nombreEmpleado" name="nombreEmpleado" class="inputEmpleado" required>
+            </div>
+            <div class="grupoFormulario">
+                <label for="apellidoEmpleado" class="etiquetaEmpleado">Apellido:</label>
+                <input type="text" id="apellidoEmpleado" name="apellidoEmpleado" class="inputEmpleado" required>
+            </div>
+            <div class="grupoFormulario">
+                <label for="puestoEmpleado" class="etiquetaEmpleado">Puesto:</label>
+                <input type="text" id="puestoEmpleado" name="puestoEmpleado" class="inputEmpleado" required>
+            </div>
+            <div class="grupoFormulario">
+                <label for="salarioEmpleado" class="etiquetaEmpleado">Salario:</label>
+                <input type="number" id="salarioEmpleado" name="salarioEmpleado" step="0.01" class="inputEmpleado" required>
+            </div>
+            <div class="grupoFormulario">
+                <label for="fechaContratacionEmpleado" class="etiquetaEmpleado">Fecha de Contratación:</label>
+                <input type="date" id="fechaContratacionEmpleado" name="fechaContratacionEmpleado" class="inputEmpleado" required>
+            </div>
+            <button type="submit" class="botonAgregarEmpleado">Agregar Empleado</button>
+        </form>
+
+        <h2 class="subtituloEmpleados">Lista de Empleados</h2>
+        <div class="contenedorTablaEmpleados">
+            <table class="tablaEmpleados">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Puesto</th>
+                        <th>Salario</th>
+                        <th>Fecha de Contratación</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTablaEmpleados">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="volverAlDialogo">
+        <button onclick="volverPrincipal()" class="botonVolver">Volver a las opciones</button>
+    </div>
+
+    <script>
+        function volverPrincipal() {
+            window.location.href = "principal.html";
+        }
+    </script>
+    <script src="empleados.js"></script>
 </body>
 </html>

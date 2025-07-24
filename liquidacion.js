@@ -7,6 +7,11 @@ function guardarLiquidacion(liquidacion) {
     const liquidaciones = recuperarLiquidaciones();
     liquidaciones.push(liquidacion);
     localStorage.setItem('liquidaciones', JSON.stringify(liquidaciones));
+    Swal.fire({
+        title: "liquidacion de  " + liquidacion.nombre + " guardada exitosamente",
+        icon: "success",
+        draggable: true
+      });
 }
 
 function recuperarLiquidaciones() {
@@ -63,12 +68,12 @@ function mostrarDetalleLiquidacion() {
         detalleDiv.innerHTML = `
             <h3>Liquidación de ${liquidacionEncontrada.nombre}</h3>
             <p><strong>Fecha de Cálculo:</strong> ${fechaFormateada}</p>
-            <p><strong>Sueldo Bruto:</strong> $${liquidacionEncontrada.sueldoBruto.toFixed(2)}</p>
-            <p><strong>Pago por Horas Extras:</strong> $${liquidacionEncontrada.pagoHorasExtras.toFixed(2)}</p>
-            <p><strong>Bonificación por Antigüedad:</strong> $${liquidacionEncontrada.bonificacionAntiguedad.toFixed(2)}</p>
-            <p><strong>Bonificación por Presentismo:</strong> $${liquidacionEncontrada.bonificacionPresentismo.toFixed(2)}</p>
-            <p><strong>Deducciones:</strong> $${liquidacionEncontrada.deducciones.toFixed(2)}</p>
-            <p><strong>Sueldo Neto:</strong> $${liquidacionEncontrada.sueldoNeto.toFixed(2)}</p>
+            <p><strong>Sueldo Bruto:</strong> ${liquidacionEncontrada.sueldoBruto.toFixed(2)}</p>
+            <p><strong>Pago por Horas Extras:</strong> ${liquidacionEncontrada.pagoHorasExtras.toFixed(2)}</p>
+            <p><strong>Bonificación por Antigüedad:</strong> ${liquidacionEncontrada.bonificacionAntiguedad.toFixed(2)}</p>
+            <p><strong>Bonificación por Presentismo:</strong> ${liquidacionEncontrada.bonificacionPresentismo.toFixed(2)}</p>
+            <p><strong>Deducciones:</strong> ${liquidacionEncontrada.deducciones.toFixed(2)}</p>
+            <p><strong>Sueldo Neto:</strong> ${liquidacionEncontrada.sueldoNeto.toFixed(2)}</p>
             <button onclick="confirmarYEliminarLiquidacion('${liquidacionEncontrada.nombre}', '${liquidacionEncontrada.fecha}')">Eliminar esta liquidación</button>
         `;
     } else {
@@ -147,7 +152,7 @@ function liquidacion(event) {
     SelectorLiquidaciones(); 
    
     document.getElementById('selectorLiquidaciones').value = nombre;
-    mostrarDetalleLiquidacion(); // Mostrar la liquidación recién guardada
+    mostrarDetalleLiquidacion(); 
 }
 
 
